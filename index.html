@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Search Tool</title>
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Movie Search Tool</h1>
-    <form action="" method="get">
-        <label for="search-movie"></label>
-        <input type="text" name="search-movie" id="search-movie">
-        <button type="submit">Search</button>
-    </form>
-
+    <h1>MOVIE SEARCH TOOL</h1>
     <div class="container">
-        <h1 id="apiElement"></h1>
+        <form action="" method="get">
+            <div class="inputContainer">
+                <label for="searchMovieByName"></label>
+                <input type="text" name="searchMovieByName" id="searchMovieByName" placeholder="Input a movie name...">
+            </div>
+            <p>OR</p>
+            <div class="inputContainer">
+                <label for="searchMovieByYear"></label>
+                <input type="text" name="searchMovieByYear" id="searchMovieByYear" placeholder="Input a year...">
+            </div>
+            <button type="submit" id="searchBtn">Search</button>
+        </form>
+    
     </div>
+    <h1 id="apiElement"></h1>
 
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
