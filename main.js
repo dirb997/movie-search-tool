@@ -8,7 +8,47 @@ const searchButton = document.getElementById('searchBtn');
 const movieApiUrl = 'http://www.omdbapi.com/';
 const apiKey = 'f40b039d'
 
+function searchNewMovie(movieName) {
+    // If input is empty, return
+    if(!movieName) return;
+
+    // Fetch API
+    fetch(`${movieApiUrl}?apikey=${apiKey}&t=${movieName}`)
+    // Convert to JSON
+    .then(response => response.json())
+    // Display data
+    .then(data => {
+        const movie = new Movie(data.Title, data.Released, data.Ratings[0].Value, data.imdbRating);
+        const movieDetails = movie.MovieDetails;
+        const movieElement = document.createElement('div');
+        movieElement.className = 'movie';
+        movieElement.innerHTML = `
+        <h2>${movie.movieName}</h2>
+        <ul>
+            <li>Release Date: ${movieDetails.releaseDate}</li>
+            <li>Critical Review: ${movieDetails.criticalReview}</li>
+            <li>Rating: ${movieDetails.rating}</li>
+        </ul>
+        `;
+        newElementFromAPI.appendChild(movieElement);
+    })
+    // Error handling
+    .catch(error => {
+        const warningMsg = document.createElement('div');
+        warningMsg.className = 'warning';
+        warningMsg.innerHTML = `
+        <h6>Movie not found</h6>
+        `;
+        newElementFromAPI.appendChild(warningMsg);
+
+        setTimeout(() => {
+            warningMsg.remove();
+        }, 3000);
+    });
+}
+
 searchButton.addEventListener('click', () => {
+    event.preventDefault();
     const movieName = searchInputName.value.trim();
     const movieYear = searchInputYear.value.trim();
 
@@ -20,25 +60,12 @@ searchButton.addEventListener('click', () => {
         warningMsg.innerHTML = `
         <h6>Please input any value in the search bar</h6>
         `;
-        return newElementFromAPI.appendChild(warningMsg);
+        newElementFromAPI.appendChild(warningMsg);
+
+        setTimeout(() => {
+            warningMsg.remove();
+        }, 3000);
     }
 
-    searchMovie(movieName);
+    searchNewMovie(movieName);
 });
-
-async function searchMovie(movieName) {
-    try{
-        const searchURL = `${movieApiUrl}?t=${encodeURIComponent(movieName)}&apikey=${apiKey}`;
-        console.log(`Fetching: ${searchURL}`); 
-        const response = await fetch(searchURL);
-
-        if(!response.ok){
-            throw new Error(`HTTP Status: ${response.status}`)
-        }
-    
-        const data = await response.json();
-        console.log(data);
-    } catch(error) {
-        console.error(error);
-    }  
-};
