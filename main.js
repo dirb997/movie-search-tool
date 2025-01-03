@@ -19,15 +19,14 @@ function searchNewMovie(movieName) {
     // Display data
     .then(data => {
         const movie = new Movie(data.Title, data.Released, data.Ratings[0].Value, data.imdbRating);
-        const movieDetails = movie.MovieDetails;
         const movieElement = document.createElement('div');
         movieElement.className = 'movie';
         movieElement.innerHTML = `
         <h2>${movie.movieName}</h2>
         <ul>
-            <li>Release Date: ${movieDetails.releaseDate}</li>
-            <li>Critical Review: ${movieDetails.criticalReview}</li>
-            <li>Rating: ${movieDetails.rating}</li>
+            <li>Release Date: ${movie.releaseDate}</li>
+            <li>Critical Review: ${movie.criticalReview}</li>
+            <li>Rating: ${movie.rating}</li>
         </ul>
         `;
         newElementFromAPI.appendChild(movieElement);
