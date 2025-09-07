@@ -15,4 +15,4 @@ class Movie {
     }
 }
 
-export { Movie, MovieManager };
+export { Movie };
