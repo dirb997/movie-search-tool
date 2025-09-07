@@ -1,10 +1,3 @@
-class MovieManager {
-    searchMovie(query) {
-        const lowerCaseQuery = query.toLowerCase();
-        return this.movie.filter(movie => movie.movieName.toLowerCase().includes(lowerCaseQuery))
-    }
-}
-
 class Movie {
     constructor(movieName, releaseDate, criticalReview, rating) {
         this.movieName = movieName;
@@ -14,7 +7,11 @@ class Movie {
     }
 
     get MovieDetails() {
-        return `Movie Name: ${this.movieName}\nRelease Date: ${this.releaseDate}\nReview: ${this.criticalReview}\nRating: ${this.rating}`;
+        return `
+        Movie Name: ${this.movieName}\n
+        Release Date: ${this.releaseDate}\n
+        Review: ${this.criticalReview}\n
+        Rating: ${this.rating}`;
     }
 }
 
