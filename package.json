@@ -1,0 +1,21 @@
+{
+  "name": "movie-search-tool",
+  "version": "1.0.0",
+  "description": "Movie Search Tool is a simple but efficient application to get information about movies.",
+  "homepage": "https://github.com/dirb997/movie-search-tool#readme",
+  "bugs": {
+    "url": "https://github.com/dirb997/movie-search-tool/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dirb997/movie-search-tool.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "echo \"The app is running now\" "
+  }
+}

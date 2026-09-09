@@ -56,7 +56,7 @@ searchButton.addEventListener('click', (e) => {
         const warningMsg = document.createElement('div');
         warningMsg.className = 'warning';
         warningMsg.innerHTML = `
-        <h4>Please input any value in the search bar</h4>
+        <h4>Please input any value into the search bar</h4>
         `;
         newElementFromAPI.appendChild(warningMsg);
 
@@ -64,6 +64,5 @@ searchButton.addEventListener('click', (e) => {
             warningMsg.remove();
         }, 3000);
     }
-
     searchNewMovie(movieName);
 });
